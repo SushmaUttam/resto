@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../common.service';
 declare var jQuery: any;
 
@@ -14,9 +14,10 @@ export class AddRestoComponent implements OnInit {
   addRestaurant = new FormGroup({
     name : new FormControl(''),
     address : new FormControl(''),
-    email : new FormControl(''),
+    email : new FormControl('', [Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
     mobile : new FormControl('')
   });
+  panelOpenState = true;
 
   constructor(private commonService:CommonService) { }
 

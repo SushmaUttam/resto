@@ -6,22 +6,22 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" routerLink="login">Login</a>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" (isLoggedIn)="isLoggedIn=$event">
+        <li *ngIf=!isLoggedIn class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="login" [isLoggedIn]="isLoggedIn">Login</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
+        <li *ngIf=!isLoggedIn class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="register">Register</a>
         </li>
-        <!-- <li class="nav-item" [routerLinkActive]="['active']">
+        <li *ngIf=isLoggedIn class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="add">Add Resto</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
+        <li *ngIf=isLoggedIn class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="update">Update Resto</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
+        <li *ngIf=isLoggedIn class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="list">List Resto</a>
-        </li> -->
+        </li>
       </ul>
     </div>
   </div>

@@ -1,13 +1,28 @@
 <form class="container">
-    <div class="form-group">
+    <p class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput placeholder="Enter Email Address" type="email" name="email" [(ngModel)]="email" required>
+        </mat-form-field>
+    </p>
+
+    <p class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter Password" type="password" name="password" [(ngModel)]="password" required>
+        </mat-form-field>
+    </p>
+
+    <!-- <div class="form-group">
         <label for="inputEmail">Email Address</label>
         <input type="email" class="form-control" placeholder="Enter Email Address" name="email" [(ngModel)]="email">
-    </div>
+    </div> -->
   
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="inputpassword">Password</label>
         <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="password">
-    </div>
-  
-    <button (click)="login()" type="submit" class="btn btn-primary">Login</button>
+    </div> -->
+
+    <button mat-raised-button color="primary" (click)="login()" type="submit" matTooltip="Click to Login">Login</button>
 </form>
+<h2>{{isLoggedIn}}</h2>

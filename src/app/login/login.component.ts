@@ -1,11 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  //inputs: [`isLoggedIn`],
+  outputs: [`isLoggedIn`]
 })
 export class LoginComponent implements OnInit {
   alert:boolean=false;
@@ -14,6 +17,8 @@ export class LoginComponent implements OnInit {
   password:string;
   public collection:any;
   users;
+  //@Input() public isLoggedIn;
+  @Output() isLoggedIn = new EventEmitter<boolean>();
   constructor(private commonService:CommonService, private router:Router) { }
 
   ngOnInit(): void {
@@ -29,6 +34,8 @@ export class LoginComponent implements OnInit {
         console.log("Login Successfull!");
         this.flag=true;
         this.alert=true;
+        this.isLoggedIn.emit(true);
+        console.log("isLoggedIn: ",this.isLoggedIn);
         this.router.navigate(['/list']);
         break;
       }
